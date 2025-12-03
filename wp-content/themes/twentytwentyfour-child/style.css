@@ -1,0 +1,212 @@
+/*
+Theme Name: Twenty Twenty-Four Child
+Template: twentytwentyfour
+Version: 1.0.0
+Description: Дочерняя тема для Twenty Twenty-Four.
+Author: FathomCode
+Text Domain: twentytwentyfour-child
+*/
+
+/* --- CSS Переменные --- */
+:root {
+    --primary-color: #0073aa;
+    --spacing-unit: 15px;
+    --border-radius-small: 4px;
+    --card-background: #ffffff;
+    --text-color: #333333;
+}
+
+/* --- Базовые стили --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: var(--text-color);
+    background-color: #f4f4f4;
+    line-height: 1.6;
+}
+
+.site-header, .site-footer {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: var(--spacing-unit) 0;
+}
+
+.site-header .site-title a,
+.site-footer a {
+    color: #fff;
+}
+
+/* Стили для страницы проектов */
+.projects-list-wrapper {
+    max-width: 1200px; /* Ограничиваем ширину контента */
+    margin: calc(var(--spacing-unit) * 2) auto; /* Центрируем и добавляем отступы */
+    padding: 0 var(--spacing-unit);
+}
+
+.projects-sorter {
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    text-align: right;
+}
+
+.projects-sorter label {
+    margin-right: calc(var(--spacing-unit) / 2);
+    font-weight: bold;
+}
+
+.projects-sorter select {
+    padding: calc(var(--spacing-unit) / 2);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-small);
+}
+
+/* --- Сетка проектов (Flexbox) --- */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-unit); /* Расстояние между карточками */
+    margin: 0 calc(var(--spacing-unit) / -2); /* Для компенсации padding'а внутренних элементов */
+}
+
+.project-card {
+    background-color: var(--card-background);
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden; /* Чтобы контент не вылезал за границы */
+    display: flex;
+    flex-direction: column; /* Располагаем элементы внутри карточки вертикально */
+}
+
+.project-card__image {
+    width: 100%;
+    /* Высота может быть фиксированной или рассчитываться */
+    height: 200px; /* Пример фиксированной высоты */
+    overflow: hidden; /* Скрываем все, что выходит за пределы */
+}
+
+.project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Масштабируем изображение, чтобы оно заполнило контейнер, сохраняя пропорции */
+    display: block; /* Убираем лишний отступ снизу */
+}
+
+.no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5e5e5;
+    color: #777;
+    font-style: italic;
+}
+
+.project-card__content {
+    padding: var(--spacing-unit);
+    flex-grow: 1; /* Позволяем контенту занимать оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card__title {
+    margin-top: 0;
+    margin-bottom: calc(var(--spacing-unit) / 2);
+    font-size: 1.4em;
+}
+
+.project-card__title a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.project-card__title a:hover {
+    text-decoration: underline;
+}
+
+.project-card__meta {
+    margin-top: auto; /* Прижимаем мета-информацию к низу карточки */
+    font-size: 0.9em;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: var(--spacing-unit);
+}
+
+.project-card__category,
+.project-card__cost {
+    display: block; /* Отображаем каждый элемент на новой строке */
+    margin-bottom: calc(var(--spacing-unit) / 4);
+}
+
+.project-card__category a {
+    color: #666;
+    text-decoration: none;
+    border-bottom: 1px dotted #666;
+}
+.project-card__category a:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #666;
+}
+
+/* --- Стили для single-project.php --- */
+.project-single-content {
+    max-width: 1000px;
+    margin: calc(var(--spacing-unit) * 2) auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.project-details-wrapper {
+    background-color: var(--card-background);
+    padding: calc(var(--spacing-unit) * 2);
+    border-radius: var(--border-radius-small);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.project-details-main {
+    display: flex;
+    flex-wrap: wrap; /* Для адаптивности */
+    gap: var(--spacing-unit) calc(var(--spacing-unit) * 2);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+}
+
+.project-main-image {
+    flex: 1 1 400px; /* Гибкость: растет, сжимается, базовый размер 400px */
+}
+
+.project-main-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius-small);
+}
+
+.project-meta-info {
+    flex: 1 1 300px; /* Гибкость */
+}
+
+.project-meta-info p {
+    margin-bottom: var(--spacing-unit);
+}
+
+.project-additional-description {
+    margin-top: calc(var(--spacing-unit) * 2);
+    padding-top: calc(var(--spacing-unit) * 2);
+    border-top: 1px solid #eee;
+}
+
+.project-gallery-wrapper {
+    margin-top: calc(var(--spacing-unit) * 2);
+}
+
+.project-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Адаптивная сетка для галереи */
+    gap: var(--spacing-unit);
+}
+
+.gallery-image-item img {
+    width: 100%;
+    height: 150px; /* Фиксированная высота для миниатюр галереи */
+    object-fit: cover;
+    display: block;
+    border-radius: var(--border-radius-small);
+    cursor: pointer;
+}

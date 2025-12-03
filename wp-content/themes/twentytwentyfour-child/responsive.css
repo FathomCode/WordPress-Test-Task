@@ -1,0 +1,102 @@
+/* --- Медиазапросы --- */
+
+/* Mobile: max-width 480px */
+@media (max-width: 480px) {
+    :root {
+        --spacing-unit: 10px; /* Уменьшаем отступы на мобильных */
+    }
+
+    .projects-list-wrapper {
+        margin: var(--spacing-unit) auto;
+    }
+
+    .projects-sorter {
+        text-align: center; /* Центрируем сортировку */
+        margin-bottom: var(--spacing-unit);
+    }
+    .projects-sorter select {
+        width: 90%;
+    }
+
+    .projects-grid {
+        flex-direction: column; /* Карточки друг под другом */
+        align-items: center; /* Центрируем карточки */
+    }
+
+    .project-card {
+        width: 95%; /* Делаем карточки шире */
+    }
+    .project-card__image {
+        height: 180px; /* Немного уменьшаем высоту картинки */
+    }
+
+    /* Стили для single-project.php на мобильных */
+    .project-details-main {
+        flex-direction: column; /* Блоки друг под другом */
+        gap: var(--spacing-unit);
+    }
+    .project-main-image,
+    .project-meta-info {
+        flex-basis: auto; /* Убираем базовую ширину */
+        width: 100%; /* Занимают всю ширину */
+    }
+
+    .project-gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Уменьшаем миниатюры */
+    }
+    .gallery-image-item img {
+        height: 120px;
+    }
+}
+
+
+/* Tablet: max-width 991px */
+@media (max-width: 991px) {
+    .projects-grid {
+        /* Карточки будут располагаться в 2 колонки */
+        justify-content: space-between; /* Равномерное распределение */
+    }
+
+    .project-card {
+        flex-basis: calc(50% - (var(--spacing-unit) / 2)); /* 2 карточки в ряд */
+        /* max-width: calc(50% - (var(--spacing-unit) / 2)); */
+    }
+
+    .project-details-main {
+        flex-direction: column; /* Блоки друг под другом */
+        gap: var(--spacing-unit);
+    }
+    .project-main-image,
+    .project-meta-info {
+        flex-basis: auto; /* Убираем базовую ширину */
+        width: 100%; /* Занимают всю ширину */
+    }
+}
+
+/* Desktop: min-width 1400px */
+@media (min-width: 1400px) {
+    /* Переопределяем сетку для десктопа */
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 карточки в ряд */
+        gap: var(--spacing-unit); /* Используем gap напрямую */
+        display: grid; /* Переключаем на CSS Grid */
+    }
+
+    .project-card {
+        flex-basis: auto; /* Убираем flex-basis, используем grid-template-columns */
+    }
+
+    .project-details-main {
+        flex-direction: row; /* Возвращаем flexbox для деталей */
+        flex-wrap: nowrap;
+    }
+    .project-main-image {
+        flex: 2 1 600px; /* Картинка занимает больше места */
+    }
+    .project-meta-info {
+        flex: 1 1 300px;
+    }
+}
+
+/* Дополнительные стили для родительской темы Twenty Twenty-Four, если нужно их переопределить */
+/* Например, если структура header/footer отличается */
